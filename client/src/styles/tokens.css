@@ -1,0 +1,25 @@
+:root {
+  /* Colors */
+  --color-orange: #E49128;
+  --color-beige: #F0E6D8;
+  --color-green: #015A4E;
+  --color-brown: #524128;
+  --color-red: #D85E00;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Righteous', cursive;
+  --font-body: 'Inter', sans-serif;
+  --heading-size: 28px;
+  --body-size: 18px;
+  --text-color: var(--color-brown);
+
+  /* Spacing */
+  --page-padding: 12px 12px 24px 12px;
+  --block-border: 12px solid var(--color-beige);
+  --block-radius: 10px;
+  --card-radius: 15px;
+  --gap-sm: 12px;
+  --gap-md: 24px;
+  --gap-lg: 36px;
+}

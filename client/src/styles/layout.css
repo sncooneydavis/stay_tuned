@@ -1,0 +1,16 @@
+.page-container {
+  padding: var(--page-padding);
+  padding-top: 20dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  scroll-snap-align: start;
+  min-height: fit-content;
+}
+
+.block {
+  border: var(--block-border);
+  border-radius: var(--block-radius);
+}

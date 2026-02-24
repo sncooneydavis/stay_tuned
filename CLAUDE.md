@@ -25,16 +25,20 @@ stay-tuned/
 │   ├── vite.config.js
 │   ├── index.html
 │   ├── public/
+│   │   ├── filler/             # placeholder images
 │   │   └── assets/
 │   │       ├── logo.png
 │   │       ├── event_flier.png
 │   │       └── icons/          # SVGs
 │   └── src/
-│       ├── main.jsx
+│       ├── main.jsx            # Entry point — imports global.css + layout.css
 │       ├── App.jsx
-│       ├── index.css           # Tailwind directives + custom CSS variables
 │       ├── components/
 │       ├── pages/
+│       ├── styles/
+│       │    ├── tokens.css     # Design tokens (colors, typography, spacing)
+│       │    ├── global.css     # Reset & base styles (imports tokens.css)
+│       │    └── layout.css     # Mobile layout helpers (.page-container, .section, .block)
 │       ├── shopify.js          # Shopify Buy SDK
 │       └── api.js              # Fetch helpers for backend
 ├── server/                     # Express.js API
