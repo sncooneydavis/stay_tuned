@@ -6,7 +6,7 @@ Stay Tuned Records — mobile-first record store website with Shopify commerce i
 
 ## Repo Path
 
-/path/to/stay-tuned
+/Users/shannoncooney/OneDrive/repos/stay_tuned
 
 ## Stack
 
@@ -18,6 +18,7 @@ Stay Tuned Records — mobile-first record store website with Shopify commerce i
 
 ## Project Structure
 
+```md
 stay-tuned/
 ├── client/                     # Vite + React SPA
 │   ├── package.json
@@ -44,9 +45,12 @@ stay-tuned/
 │       ├── index.js
 │       ├── routes.js
 │       └── auth.js
+├── docs/  
+│   └── SETUP.md
 ├── CLAUDE.md
 ├── README.md
 └── .gitignore
+```
 
 No root package.json. Client and server are independent — install and run separately.
 

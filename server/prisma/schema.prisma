@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model FaqEntry {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model StaffPick {
+  id              Int      @id @default(autoincrement())
+  shopifyProductId String
+  customNote      String?
+  sortOrder       Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model BannerConfig {
+  id              Int      @id @default(autoincrement())
+  textContent     String
+  textColor       String   @default("#FFFFFF")
+  textSize        String   @default("1rem")
+  backgroundColor String   @default("#000000")
+  imageUrl1       String?
+  imageUrl2       String?
+  imageUrl3       String?
+  isActive        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  subscribedAt DateTime @default(now())
+}
