@@ -8,103 +8,126 @@
 
 ## Colors
 
-- custom_orange: E49128
-- custom_beige: F0E6D8
-- custom_green: 015A4E
-- custom_brown: 524128
-- custom_red: D85E00
+Defined as CSS custom properties in `src/styles/tokens.css`:
+
+| Token              | Variable           | Value     |
+| ------------------ | ------------------ | --------- |
+| Orange             | `--color-orange`   | `#E49128` |
+| Beige              | `--color-beige`    | `#F0E6D8` |
+| Green              | `--color-green`    | `#015A4E` |
+| Brown              | `--color-brown`    | `#524128` |
+| Red                | `--color-red`      | `#D85E00` |
+| White              | `--color-white`    | `#FFFFFF` |
 
 ## Typography
 
-all text centered vertically within text boxes
-unless otherwise indicated:
+Defined as CSS custom properties in `src/styles/tokens.css`. Base styles applied in `src/styles/global.css`.
 
-- heading_text
-  - Righteous (Google Fonts)
-  - 28pt
-  - color: custom_brown
-- body_text
-  - Inter (Google Fonts)
-  - 18pt
-  - color: custom_brown
+All text centered vertically within text boxes unless otherwise indicated.
+
+| Token            | Variable           | Value                      |
+| ---------------- | ------------------ | -------------------------- |
+| Heading font     | `--font-heading`   | `'Righteous', cursive`     |
+| Body font        | `--font-body`      | `'Inter', sans-serif`      |
+| Heading size     | `--heading-size`   | `28px`                     |
+| Body size        | `--body-size`      | `18px`                     |
+| Text color       | `--text-color`     | `var(--color-brown)`       |
+
+**Global base styles** (`global.css`):
+- `body` — margin 0, font-family `var(--font-body)`, font-size `var(--body-size)`, color `var(--text-color)`
+- `h1`–`h6` — font-family `var(--font-heading)`, font-size `var(--heading-size)`, color `var(--text-color)`
+- All elements — `box-sizing: border-box`
+- `html` — `scroll-behavior: smooth`
+- `button`, `input`, `select`, `textarea` — reset (no border/background, inherit font & color)
+
+## Spacing
+
+Defined as CSS custom properties in `src/styles/tokens.css`:
+
+| Token            | Variable           | Value                              |
+| ---------------- | ------------------ | ---------------------------------- |
+| Page padding     | `--page-padding`   | `12px 12px 24px 12px`             |
+| Block border     | `--block-border`   | `12px solid var(--color-beige)`    |
+| Block radius     | `--block-radius`   | `10px`                             |
+| Card radius      | `--card-radius`    | `15px`                             |
+| Gap (small)      | `--gap-sm`         | `6px`                              |
+| Gap (medium)     | `--gap-md`         | `12px`                             |
+| Gap (large)      | `--gap-lg`         | `24px`                             |
 
 ## Layout
 
+Layout utility classes defined in `src/styles/layout.css`.
+
 ### Media Query: Mobile
 
-- padding within viewport: 12px 12px 24px 12px
-- sections
-  - stack vertically within the body
-  - scroll snap each section to `start` positioned just below the fixed header  
-- blocks
-- stack vertically within sections
-- header block fixed at top
-- border: 12px solid custom_beige
-- border_radius: 10px
+- `.page-container` — applies `var(--page-padding)`, `padding-top: 12px`, vertical scroll-snap (`scroll-snap-type: y mandatory`)
+- `.section` — `scroll-snap-align: start`, `min-height: fit-content`; sections stack vertically within `.page-container`
+- `.block` — `border: var(--block-border)`, `border-radius: var(--block-radius)`; blocks stack vertically within sections
+- Header block fixed at top (implemented per-component, not in layout.css)
 
 ### Media Query: Desktop/Tablet
 
 --> do later
 
-## Asset List
+## Style Files
 
-- Icons (unless otherwise indicated, color is custom_green)
-  - basket.svg
-  - menu.svg
-  - search.svg
-  - instagram.svg
-  - facebook.svg
-  - location.svg
-  - email.svg
-- Images
-  - logo.png
-  - event_flier.png
+| File                     | Purpose                                                          |
+| ------------------------ | ---------------------------------------------------------------- |
+| `src/styles/tokens.css`  | CSS custom properties (colors, typography, spacing)              |
+| `src/styles/global.css`  | Reset & base styles (imports tokens.css)                         |
+| `src/styles/layout.css`  | Mobile layout utilities (`.page-container`, `.section`, `.block`) |
+| `src/styles/Header.css`  | Header component styles (fixed positioning, search bar, icons)   |
+
+Import chain: `main.jsx` imports `global.css` (which imports `tokens.css`) and `layout.css`. Component CSS imported per-component (e.g. `Header.jsx` imports `Header.css`).
 
 ## Header
 
 ### layout
 
 - fixed at top
-- padding: 12px
-- height: `20dvh`
+- padding: `24px 24px 12px 24px`
+- height: `160px`
+- space between logo and search bar: `var(--gap-md)` (12px)
 
 ### components
 
 - search
+  - on focus: "search our catalog" placeholder text disappears
   - on text input (TODO_LATER):
-    - "search our catalog" text disappears
     - auto suggestions box drops down (animated) and is populated from catalog via Shopify API
     - when any suggestion is clicked on, "shop" page is opened for that product
   - "search our catalog" text
     - italic
     - text weight: light
+    - opacity: 50%
   - user inputted text
     - normal (not italic)
     - text weight: light
 - utilities
-  - basket.svg (TODO_LATER: add functionality)
+  - centered vertically in space between search bar and top of container
+  - basket_green.svg (TODO_LATER: add functionality)
     - on click:
       - icon turns 50% lighter in color
       - open basket
-        - transition: slide from right onto page
-        - HUMAN_TODO: design basket dropdown
+        - transition: basket card slides down from top of page
+        - see ./docs/mobile_cart.png
     - on second click (anywhere not on the basket dropdown):
       - icon returns to normal color
       - close basket
-        - transition: slide to right off of page
-  - menu.svg
+        - transition: slide up off of page
+  - menu_green.svg
     - on click:
       - icon turns 50% lighter in color
       - open menu
-        - transition: slide from right onto page
-        - HUMAN_TODO: design menu dropdown
+        - transition: menu card slides down from top of page
+        - see ./docs/mobile_cart.png
     - on second click (anywhere not on the menu dropdown):
       - icon returns to normal color
       - close menu
-        - transition: slide to right off of page
+        - transition: slide up off of page
   - phone number text
     - on click:
-      - text turns 50% lighter in color, pause 2 seconds, returns to normal color
+      - text turns 50% lighter in color, pause 1 seconds, returns to normal color
       - call number
     - text weight: medium
 

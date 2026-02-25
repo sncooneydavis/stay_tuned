@@ -1,6 +1,6 @@
 .page-container {
   padding: var(--page-padding);
-  padding-top: 20dvh;
+  padding-top: 12px;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
 }

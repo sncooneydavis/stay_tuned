@@ -1,8 +1,18 @@
+import { Routes, Route } from 'react-router-dom';
+import { Header } from './components/Header';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import About from './pages/About';
+
 export default function App() {
   return (
-    <div className="page-container">
-      <h1>Stay Tuned Records</h1>
-      <p>Design system loaded.</p>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </>
   );
 }

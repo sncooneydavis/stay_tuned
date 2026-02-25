@@ -1,0 +1,38 @@
+.hero {
+  height: calc((50dvh - 160px) / 2);
+  background-image: url('/assets/hero_image.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--block-radius);
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  justify-content: center;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+.hero-buttons--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero-btn {
+  background-color: var(--color-beige);
+  color: var(--color-green);
+  font-family: var(--font-heading);
+  font-size: var(--heading-size);
+  padding: 12px;
+  border: none;
+  border-radius: 0 var(--block-radius) var(--block-radius) 0;
+  cursor: pointer;
+  text-align: left;
+  width: fit-content;
+}
