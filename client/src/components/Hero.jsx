@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Hero.css';
 
-const BUTTONS = ['Records', 'CDs', 'Cassettes', 'Players'];
+const CATEGORIES = ['Records', 'CDs', 'Cassettes', 'Players'];
 
-export default function Hero() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setVisible(true);
-  }, []);
-
+export function Hero() {
   return (
-    <div className="hero">
-      <div className={`hero-buttons${visible ? ' hero-buttons--visible' : ''}`}>
-        {BUTTONS.map((label) => (
-          <button key={label} className="hero-btn">
+    <div className="hero block">
+      <img
+        src="/assets/hero_image.png"
+        alt="Stay Tuned Records store interior"
+        className="hero-bg"
+      />
+      <div className="hero-button-container">
+        {CATEGORIES.map((label) => (
+          // TODO_LATER: add category filter query param (e.g. /shop?category=records)
+          <Link key={label} to="/shop" className="hero-btn">
             {label}
-          </button>
+          </Link>
         ))}
       </div>
     </div>
