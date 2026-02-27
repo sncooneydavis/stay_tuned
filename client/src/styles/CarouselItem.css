@@ -1,0 +1,37 @@
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  width: 140px;
+}
+
+.carousel-item__image {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--card-radius);
+}
+
+.carousel-item__text {
+  width: 140px;
+  height: 88px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.carousel-item__title,
+.carousel-item__price {
+  margin: 0;
+}
+
+.carousel-item__btn {
+  width: 140px;
+  padding: var(--gap-sm) var(--gap-md);
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: var(--body-size);
+  border-radius: var(--card-radius);
+  cursor: pointer;
+  text-align: center;
+}
