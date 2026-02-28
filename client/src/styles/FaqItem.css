@@ -1,0 +1,77 @@
+.faq-item__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.7);
+  padding: 0;
+  cursor: pointer;
+}
+
+.faq-item__text {
+  width: 80%;
+  min-height: 60px;
+  padding: 12px 0 12px 6px;
+  font-size: var(--body-size);
+  color: var(--color-white);
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+/* Visual balance: shorter first row with top-aligned text */
+.faq-item:first-child .faq-item__text {
+  min-height: unset;
+  height: 57px;
+  align-items: flex-start;
+  padding: 0 0 12px 6px;
+}
+
+/* margin-left: auto pushes the icon to the right edge within the flex row */
+.faq-item__icon {
+  margin-left: auto;
+  padding-right: 12px;
+  font-size: 24px;
+  color: var(--color-white);
+}
+
+/* grid-template-rows transition: smoother than max-height, avoids an arbitrary large value */
+.faq-item__answer-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-item__answer-wrapper--open {
+  grid-template-rows: 1fr;
+}
+
+.faq-item__answer-inner {
+  overflow: hidden;
+}
+
+/* Background matches the dividing line color so the line appears to split open */
+.faq-item__answer {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  color: var(--color-brown);
+  font-size: 17px;
+  font-weight: lighter;
+  border-radius: 0px 0px 15px 15px;
+}
+
+/* Reset browser default margins, then restore spacing between adjacent blocks */
+.faq-item__answer p,
+.faq-item__answer ul {
+  margin: 0;
+}
+
+.faq-item__answer p + ul,
+.faq-item__answer ul + p {
+  margin-top: 8px;
+}
+
+.faq-item__answer ul {
+  padding-left: 20px;
+}

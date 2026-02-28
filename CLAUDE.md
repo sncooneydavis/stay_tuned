@@ -2,87 +2,116 @@
 
 ## Do
 
-- when design spec or instructions are ambiguous, ask clarifying questions before writing code.
-- ask before scaffolding empty files or directories
+- When selecting files to read in order to get context, use the File Tree section of this document.
+- When you encounter ambiguity of user intent, ask clarifying questions before writing code.
+- If two pieces of code look alike, duplicate them. Abstractions will be introduced during dedicated refactoring periods, not during feature work.
+- When you make an implementation choice where a reasonable developer might have done it differently, add a brief comment explaining why you chose this approach.
 
 ## Do NOT
 
-- Add TypeScript
-- Add webpack
-- Add Redux, Zustand, or any state management library
+- Extract shared utilities, helper functions, or base components from similar-looking code.
+- Add TypeScript, webpack, Redux, Zustand, or any state management library
 - Build the event flier (`event_flier.png`) in HTML — it is a static image asset
 - Install UI component libraries (Material UI, Chakra, shadcn, etc.)
 - Add a root `package.json` or workspace tooling (Turborepo, Nx, Lerna)
-- Modify the design spec file
 
 ## Project
 
 Stay Tuned Records — mobile-first record store website with Shopify commerce integration and an admin CMS.
 
-## Repo Path
-
-/Users/shannoncooney/Library/CloudStorage/OneDrive-Personal/repos/stay_tuned
-
-## Current State
-
-Project is in early skeleton stage:
-
-- **Client**: App shell with React Router (Home, Shop, About routes). All three page components are stubs (empty divs). Design tokens, global reset, layout utilities in place. `shopify.js` and `api.js` are empty.
-- **Server**: all source files (`index.js`, `routes.js`, `auth.js`) are empty.
-- **Database**: Prisma schema defined with initial migration applied (4 tables created), but no server code uses it yet.
-- **Docs**: setup guide, desktop/mobile wireframes, and cart/menu wireframe screenshots available.
-
-## Stack
+### Stack
 
 - **Client** (`client/`): Vite + React + React Router
 - **Server** (`server/`): Express.js + Prisma (SQLite) + Passport.js
 - **Commerce**: Shopify Buy SDK (client-side) + Storefront API (server-side proxy for search)
 - **Styling**: Tailwind CSS v4 installed via `@tailwindcss/vite`; currently using CSS custom properties and layout utility classes. Tailwind utilities available for use as components are built.
-  - **Fonts**: Righteous (headings), Inter (body) — loaded via Google Fonts CDN
 
-<!-- #TODO_HUMAN_CLAUDE: Design the API proxy pattern. Intended flow: client → Express server → Shopify Storefront API (for search/autocomplete). Needs decision on endpoint structure, caching, and error handling. -->
+### File Tree
 
-## Project Structure
+- Purpose: This tree allows Claude to select files to read in order to gather the appropriate, yet minimal context.
+- Instructions for Claude when updating the File Tree:
+  - If the purpose of the file is non-obvious, comment should include a minimal description. Only include the absolute minimum information needed for Claude to decide if that file contains relevant context for future prompts.
+  - If the file calls another file, the comment should include: "(Calls: {file.name})"
+  - If the file is a stub, mark it as such (STUB).
 
-<!-- #TODO_HUMAN_CLAUDE: Consider adding a Claude Code hook that auto-regenerates this directory listing at the end of each prompt cycle. Rationale: if CC sees the file list up front, it can immediately skip irrelevant directories (e.g., /assets, /dist) when working on specific features. -->
+stay_tuned/
+├── CLAUDE.md
+├── ARCHITECTURE.md                    # Intended data flow for carousels, cart, and FAQ
+├── TODO.md                            # Outstanding tasks for Shannon and Claude
+├── README.md
+├── .gitignore
+│
+├── client/
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── index.html
+│   ├── .env
+│   ├── public/
+│   │   ├── assets/
+│   │   │   ├── event_flier.png
+│   │   │   ├── hero_image.png
+│   │   │   ├── stay_tuned_logo.png
+│   │   │   └── icons/
+│   │   └── filler/                    # Dev-only placeholder album art
+│   └── src/
+│       ├── main.jsx                   # React entry point. (Calls: App.jsx, global.css, layout.css)
+│       ├── App.jsx                    # Root component. (Calls: Header.jsx, Home.jsx, Shop.jsx, About.jsx)
+│       ├── shopify.js                 # STUB — Shopify Buy SDK client init.
+│       ├── api.js                     # STUB — fetch helpers for Express backend.
+│       ├── components/
+│       │   ├── Header.jsx
+│       │   ├── Hero.jsx               # Hero image with category link buttons linking to /shop. (Calls: react-router-dom)
+│       │   ├── Carousel.jsx           # Horizontal scrolling product carousel with scroll-in animation. (Calls: CarouselItem.jsx)
+│       │   ├── CarouselItem.jsx       # Album card: image, title, price, add-to-cart button.
+│       │   ├── Event.jsx              # Displays the event_flier.png static image.
+│       │   ├── Faq.jsx                # FAQ accordion: manages open state, close-on-click-outside, close-on-scroll. (Calls: FaqItem.jsx)
+│       │   └── FaqItem.jsx            # FAQ row: question button + expand/collapse answer card.
+│       ├── pages/
+│       │   ├── Home.jsx               # (Calls: Hero.jsx, Event.jsx, Carousel.jsx, Faq.jsx)
+│       │   ├── Shop.jsx               # STUB
+│       │   └── About.jsx              # STUB
+│       └── styles/
+│           ├── tokens.css             # CSS custom properties: brand colors, fonts, spacing
+│           ├── global.css             # CSS reset & base element styles. (Calls: tokens.css)
+│           ├── layout.css             # Mobile layout utilities
+│           ├── Header.css
+│           ├── Hero.css
+│           ├── Carousel.css
+│           ├── CarouselItem.css
+│           ├── Event.css
+│           ├── Faq.css
+│           └── FaqItem.css
+│
+├── server/                            # Express.js API
+│   ├── package.json
+│   ├── .env
+│   ├── prisma/
+│   │   ├── schema.prisma
+│   │   ├── dev.db                     # SQLite database file (gitignored)
+│   │   └── migrations/
+│   │       ├── migration_lock.toml
+│   │       └── 20260224204006_init/
+│   │           └── migration.sql
+│   └── src/
+│       ├── index.js                   # STUB
+│       ├── routes.js                  # STUB
+│       └── auth.js                    # STUB
+│
+└── docs/
+    ├── setup.md                       # Dependency rationale, env var docs, dev setup instructions
+    ├── desktop_full_wireframe.png     # Desktop layout wireframe
+    ├── mobile_full_wireframe.png      # Mobile layout wireframe
+    ├── mobile_cart.png                # Mobile cart/basket wireframe
+    └── mobile_menu.png                # Mobile navigation menu wireframe
 
 No root package.json. Client and server are independent — install and run separately.
 
-## Data Model
-
-<!-- #TODO_HUMAN_CLAUDE: Schema exists in server/prisma/schema.prisma with an initial migration, but models haven't been finalized/reviewed. Confirm these are correct before building server endpoints. -->
-
-Intended Prisma models:
-
-- **FaqEntry** — question, answer, sortOrder, timestamps
-- **StaffPick** — shopifyProductId, customNote, sortOrder, timestamps
-- **BannerConfig** — textContent, text styling, background color, image URLs (1–3), isActive flag, timestamps
-- **NewsletterSubscriber** — email (unique), subscribedAt
-
-## Dev Commands
-
-```bash
-# Client (port 5173)
-cd client && npm install
-npm run dev
-
-# Server (port 3000)
-cd server && npm install
-npm run dev          # uses nodemon
-```
-
-<!-- #TODO_CLAUDE: Create ESLint and Prettier configuration files. Both are installed as devDependencies in client and server but have no config files yet. -->
-
-## Environment Variables
+### Environment Variables
 
 - Client: `client/.env` — prefix all with `VITE_` (e.g., `VITE_SHOPIFY_DOMAIN`, `VITE_API_URL`)
 - Server: `server/.env` — no prefix (e.g., `SESSION_SECRET`, `ADMIN_USERNAME`, `DATABASE_URL`)
 
 Do not hardcode env values. Do not commit `.env` files.
-
-## Design Spec
-
-All visual details — colors, typography, spacing, sizing, animations, interaction behavior — live in `DESIGN_SPEC.md` at project root. **Always consult the design spec before making visual decisions.**
 
 ## Conventions
 
@@ -92,10 +121,3 @@ All visual details — colors, typography, spacing, sizing, animations, interact
 - **Styling**: Tailwind utility classes inline — do not extract to `@apply` unless explicitly asked
 - **Comments**: comment non-obvious logic, skip the obvious. No boilerplate JSDoc on every function
 - **State**: React Context + Shopify Buy SDK state. No Redux/Zustand unless explicitly approved
-
-## Deployment
-
-<!-- #TODO_HUMAN_CLAUDE: Deployment target and configuration not yet finalized. -->
-
-- **Client**: static build (`npm run build` → `dist/`)
-- **Server**: Express app

@@ -1,6 +1,6 @@
 .body-container {
-  margin-top: 160px;
-  height: calc(100vh - 160px);
+  margin-top: 165px;
+  height: calc(100vh - 165px);
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   padding: var(--page-padding);
@@ -9,6 +9,7 @@
 .section {
   scroll-snap-align: start;
   height: 100%;
+  margin-bottom: 24px;
 }
 
 .block {

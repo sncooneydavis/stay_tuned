@@ -1,0 +1,76 @@
+.carousel {
+  height: 50%;
+  padding: 12px 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.carousel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 12px 0 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.carousel__title {
+  font-family: var(--font-heading);
+  font-size: var(--heading-size);
+  color: var(--text-color);
+  padding-left: 10px;
+}
+
+.carousel__view-all {
+  font-size: var(--body-size);
+  color: var(--text-color);
+}
+
+/* 5px divider line: left end rounded, right end square */
+.carousel__divider {
+  height: 5px;
+  background-color: var(--color-brown);
+  border-radius: 5px 0 0 5px;
+  margin: 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.carousel__track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  flex: 1;
+  align-items: flex-start;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  z-index: 0;
+  margin-top: -1px;
+  /* Pre-animation: track starts fully off-screen to the right */
+  opacity: 0;
+  transform: translateX(30%);
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__track .carousel-item {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* Post-animation: track slides in as a unit, avoiding scroll-snap conflicts */
+.carousel__track--animated {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 2s ease, transform 1.5s ease;
+}

@@ -11,3 +11,7 @@
 ## Cart and Checkout
 
 - Use Shopify Buy SDK client-side strictly for cart operations (add to cart, checkout)
+
+## FAQ
+
+- The store owner creates/edits/reorders FAQ entries through the CMS, those get stored in SQLite via Prisma (question text, answer text, display order), and the frontend fetches them from something like GET /api/faq.
