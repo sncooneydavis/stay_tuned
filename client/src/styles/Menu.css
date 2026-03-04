@@ -1,0 +1,87 @@
+/* ── Overlay: dims content behind the menu ── */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(240, 230, 216, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.menu-overlay--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Menu panel ── */
+
+.menu {
+  position: fixed;
+  top: 0px;
+  left: 12px;
+  right: 12px;
+  z-index: 200;
+  background-color: var(--color-green);
+  padding: 48px 24px;
+  transform: translateY(-110%);
+  transition: transform 0.5s ease;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.menu--open {
+  transform: translateY(0);
+}
+
+/* ── Close button: beige hamburger, top-right ── */
+
+.menu-close-btn {
+  position: absolute;
+  top: 36px;
+  right: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-close-btn img {
+  height: 24px;
+  width: auto;
+}
+
+/* ── Nav list: centered vertically and horizontally ── */
+
+.menu-nav {
+  list-style: none;
+  margin: 0;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+}
+
+/* ── Nav links ── */
+
+.menu-link {
+  font-family: var(--font-heading);
+  font-size: var(--heading-size);
+  font-weight: 400;
+  color: var(--color-beige);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-link--active {
+  color: var(--color-orange);
+  font-weight: 700;
+}
+
+.menu-flower {
+  height: 28px;
+  width: auto;
+}

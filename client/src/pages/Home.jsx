@@ -2,6 +2,8 @@ import { Hero } from '../components/Hero';
 import { Event } from '../components/Event';
 import { Carousel } from '../components/Carousel';
 import { Faq } from '../components/Faq';
+import { Newsletter } from '../components/Newsletter';
+import { Footer } from '../components/Footer';
 
 const FILLER_ITEMS = [
   { imageUrl: '/filler/album1.png', artist: 'Olivia Dean', album: 'The Art of Loving', price: '$19.99', onAddToCart: () => {} },
@@ -24,8 +26,8 @@ export default function Home() {
       </section>
       <section className="section">
         <Faq />
-        {/* Newsletter */}
-        {/* Footer */}
+        <Newsletter />
+        <Footer />
       </section>
     </>
   );

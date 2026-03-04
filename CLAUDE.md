@@ -55,19 +55,22 @@ stay_tuned/
 │   │   └── filler/                    # Dev-only placeholder album art
 │   └── src/
 │       ├── main.jsx                   # React entry point. (Calls: App.jsx, global.css, layout.css)
-│       ├── App.jsx                    # Root component. (Calls: Header.jsx, Home.jsx, Shop.jsx, About.jsx)
+│       ├── App.jsx                    # Root component; manages menu open/close state. (Calls: Header.jsx, Menu.jsx, Home.jsx, Shop.jsx, About.jsx)
 │       ├── shopify.js                 # STUB — Shopify Buy SDK client init.
 │       ├── api.js                     # STUB — fetch helpers for Express backend.
 │       ├── components/
-│       │   ├── Header.jsx
+│       │   ├── Header.jsx             # Accepts onMenuClick prop to open the Menu.
+│       │   ├── Menu.jsx               # Slide-down nav overlay: Home, Shop, FAQ, Our Story. Highlights active route. (Calls: react-router-dom)
 │       │   ├── Hero.jsx               # Hero image with category link buttons linking to /shop. (Calls: react-router-dom)
 │       │   ├── Carousel.jsx           # Horizontal scrolling product carousel with scroll-in animation. (Calls: CarouselItem.jsx)
 │       │   ├── CarouselItem.jsx       # Album card: image, title, price, add-to-cart button.
 │       │   ├── Event.jsx              # Displays the event_flier.png static image.
 │       │   ├── Faq.jsx                # FAQ accordion: manages open state, close-on-click-outside, close-on-scroll. (Calls: FaqItem.jsx)
-│       │   └── FaqItem.jsx            # FAQ row: question button + expand/collapse answer card.
+│       │   ├── FaqItem.jsx            # FAQ row: question button + expand/collapse answer card.
+│       │   ├── Newsletter.jsx         # Email signup: validates email pattern, shows green submit arrow on valid input.
+│       │   └── Footer.jsx            # Store info: hours, social links, address (Google Maps), email. (Calls: Footer.css)
 │       ├── pages/
-│       │   ├── Home.jsx               # (Calls: Hero.jsx, Event.jsx, Carousel.jsx, Faq.jsx)
+│       │   ├── Home.jsx               # (Calls: Hero.jsx, Event.jsx, Carousel.jsx, Faq.jsx, Newsletter.jsx, Footer.jsx)
 │       │   ├── Shop.jsx               # STUB
 │       │   └── About.jsx              # STUB
 │       └── styles/
@@ -75,12 +78,15 @@ stay_tuned/
 │           ├── global.css             # CSS reset & base element styles. (Calls: tokens.css)
 │           ├── layout.css             # Mobile layout utilities
 │           ├── Header.css
+│           ├── Menu.css
 │           ├── Hero.css
 │           ├── Carousel.css
 │           ├── CarouselItem.css
 │           ├── Event.css
 │           ├── Faq.css
-│           └── FaqItem.css
+│           ├── FaqItem.css
+│           ├── Newsletter.css
+│           └── Footer.css
 │
 ├── server/                            # Express.js API
 │   ├── package.json

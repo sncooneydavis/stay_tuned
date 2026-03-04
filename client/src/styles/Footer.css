@@ -1,0 +1,83 @@
+.footer {
+  padding: 12px 24px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  font-family: var(--font-body);
+  color: var(--color-brown);
+}
+
+.footer__hours {
+  grid-column: 1 / 5;
+}
+
+.footer__social {
+  grid-column: 5 / 7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footer__address {
+  grid-column: 1 / 6;
+}
+
+.footer__email {
+  grid-column: 6 / 7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* ── Headings ── */
+
+.footer__heading {
+  font-size: 20px;
+  margin: 0 0 6px 0;
+}
+
+/* ── Top-left: Hours ── */
+
+.footer__hours-table {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: var(--gap-md);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.footer__hours-day {
+  font-weight: 650;
+}
+
+/* ── Top-right: Follow us ── */
+
+.footer__social-icons {
+  display: flex;
+  gap: var(--gap-sm);
+}
+
+.footer__icon {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+/* ── Bottom-left: Address ── */
+
+.footer__address-link {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+  text-decoration: none;
+  color: var(--color-brown);
+  margin-top: 24px;
+}
+
+.footer__address-text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ── Bottom-right: Email ── */
