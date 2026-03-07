@@ -4,7 +4,6 @@
   grid-template-columns: repeat(6, 1fr);
   font-family: var(--font-body);
   color: var(--color-brown);
-  margin-top: auto;
 }
 
 .footer__hours {

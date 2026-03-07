@@ -65,7 +65,7 @@ export function ShopPagination({ currentPage, totalPages, onPageChange }) {
             onKeyDown={handleKeyDown}
           />
         ) : (
-          <>Page {currentPage} / {totalPages}</>
+          <>{currentPage} / {totalPages}</>
         )}
         {/* Keep " / {totalPages}" visible while editing so layout stays stable */}
         {isEditing && <span> / {totalPages}</span>}

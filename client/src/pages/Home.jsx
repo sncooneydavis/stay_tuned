@@ -20,7 +20,7 @@ export default function Home() {
         <Hero />
         <Event />
       </section>
-      <section className="section">
+      <section className="section carousel">
         <Carousel title="Just In" items={FILLER_ITEMS} />
         <Carousel title="Staff Picks" items={FILLER_ITEMS} />
       </section>

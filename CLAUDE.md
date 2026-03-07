@@ -73,7 +73,7 @@ stay_tuned/
 │       │   └── ShopPagination.jsx   # Page nav: Back/Page X of Y/Next buttons; click page indicator to type a page number. (Calls: ShopPagination.css)
 │       ├── pages/
 │       │   ├── Home.jsx               # (Calls: Hero.jsx, Event.jsx, Carousel.jsx, Faq.jsx, Newsletter.jsx, Footer.jsx)
-│       │   ├── Shop.jsx               # (Calls: ShopFilter.jsx, ShopSorter.jsx, ShopPagination.jsx)
+│       │   ├── Shop.jsx               # Product grid page: title, filter/sort controls, 2-col CarouselItem grid, pagination. (Calls: CarouselItem.jsx, ShopFilter.jsx, ShopSorter.jsx, ShopPagination.jsx, Footer.jsx, Shop.css)
 │       │   └── About.jsx              # Scrapbook-style "Our Story" page with flexbox sections. (Calls: Footer.jsx, About.css, layout.css)
 │       └── styles/
 │           ├── tokens.css             # CSS custom properties: brand colors, fonts, spacing
@@ -90,6 +90,7 @@ stay_tuned/
 │           ├── Newsletter.css
 │           ├── Footer.css
 │           ├── About.css              # Scrapbook layout: flexbox sections with one relative/absolute overlay for "Hey there!" text
+│           ├── Shop.css
 │           ├── ShopFilter.css
 │           ├── ShopSorter.css
 │           └── ShopPagination.css
