@@ -1,0 +1,64 @@
+.shop-pagination {
+  display: flex;
+  height: 40px;
+  gap: 2px;
+}
+
+/* ── Shared button styles ── */
+
+.shop-pagination-btn {
+  background-color: var(--color-green);
+  color: var(--color-beige);
+  font-family: var(--font-body);
+  font-size: var(--button-text-size);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.shop-pagination-btn:disabled {
+  cursor: default;
+}
+
+/* ── Back button ── */
+
+.shop-pagination-btn--back {
+  border-radius: 0 0 0 15px;
+  /* Keep the button taking space even when empty on first page */
+  min-width: 0;
+  flex: 1;
+}
+
+/* ── Page indicator / input ── */
+
+.shop-pagination-btn--page {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* ── Next button ── */
+
+.shop-pagination-btn--next {
+  border-radius: 0 0 15px 0;
+  min-width: 0;
+  flex: 1;
+}
+
+/* ── Inline text input ── */
+
+.shop-pagination-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-beige);
+  color: var(--color-beige);
+  font-family: var(--font-body);
+  font-size: var(--button-text-size);
+  text-align: center;
+  width: 2.5ch;
+  outline: none;
+  padding: 0;
+}

@@ -19,7 +19,6 @@
   --text-color: var(--color-brown);
 
   /* Spacing */
-  --page-padding: 0 12px;
   --block-border: 12px solid var(--color-beige);
   --block-radius: 10px;
   --card-radius: 12px;

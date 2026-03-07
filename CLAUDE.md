@@ -69,10 +69,11 @@ stay_tuned/
 │       │   ├── Newsletter.jsx         # Email signup: validates email pattern, shows green submit arrow on valid input. (Calls: Newsletter.css)
 │       │   ├── Footer.jsx            # Store info: hours, social links, address (Google Maps), email. (Calls: Footer.css)
 │       │   ├── ShopFilter.jsx        # Filter dropdown: green button with funnel icon + active label; click opens sliding menu of filter options. (Calls: ShopFilter.css)
-│       │   └── ShopSorter.jsx        # Sort dropdown: green button with sort icon + active label; click opens sliding menu of sort options. (Calls: ShopSorter.css)
+│       │   ├── ShopSorter.jsx        # Sort dropdown: green button with sort icon + active label; click opens sliding menu of sort options. (Calls: ShopSorter.css)
+│       │   └── ShopPagination.jsx   # Page nav: Back/Page X of Y/Next buttons; click page indicator to type a page number. (Calls: ShopPagination.css)
 │       ├── pages/
 │       │   ├── Home.jsx               # (Calls: Hero.jsx, Event.jsx, Carousel.jsx, Faq.jsx, Newsletter.jsx, Footer.jsx)
-│       │   ├── Shop.jsx               # (Calls: ShopFilter.jsx, ShopSorter.jsx)
+│       │   ├── Shop.jsx               # (Calls: ShopFilter.jsx, ShopSorter.jsx, ShopPagination.jsx)
 │       │   └── About.jsx              # Scrapbook-style "Our Story" page with flexbox sections. (Calls: Footer.jsx, About.css, layout.css)
 │       └── styles/
 │           ├── tokens.css             # CSS custom properties: brand colors, fonts, spacing
@@ -90,7 +91,8 @@ stay_tuned/
 │           ├── Footer.css
 │           ├── About.css              # Scrapbook layout: flexbox sections with one relative/absolute overlay for "Hey there!" text
 │           ├── ShopFilter.css
-│           └── ShopSorter.css
+│           ├── ShopSorter.css
+│           └── ShopPagination.css
 │
 ├── server/                            # Express.js API
 │   ├── package.json
