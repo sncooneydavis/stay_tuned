@@ -10,16 +10,22 @@
   /* Typography */
   --font-heading: 'Righteous', cursive;
   --font-body: 'Inter', sans-serif;
+  --font-handwriting: 'Just Me Again Down Here', cursive;
   --heading-size: 28px;
+  --button-text-size: 22px;
   --body-size: 18px;
+  --about-size-default: clamp(22px, 3.4dvh, 26px);
+  --about-size-heading: clamp(30px, 4.5dvh, 34px);
   --text-color: var(--color-brown);
 
   /* Spacing */
-  --page-padding: 12px 12px 12px 12px;
+  --page-padding: 0 12px;
   --block-border: 12px solid var(--color-beige);
   --block-radius: 10px;
-  --card-radius: 15px;
-  --gap-sm: 6px;
-  --gap-md: 12px;
-  --gap-lg: 24px;
+  --card-radius: 12px;
+  --border-radius: 20px;
+  --gap-sm: clamp(8px, 2dvw, 12px);
+  --gap-md: clamp(12px, 3dvw, 20px);
+  --gap-lg: clamp(24px, 5dvw, 32px);
+  --gap-xl: clamp(36px, 6dvw, 48px);
 }

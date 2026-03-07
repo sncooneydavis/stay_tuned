@@ -29,7 +29,7 @@ export function Hero() {
   return (
     <div className={`hero block${isVisible ? ' hero--animated' : ''}`} ref={heroRef}>
       <img
-        src="/assets/hero_image.png"
+        src="/assets/images/hero_image.png"
         alt="Stay Tuned Records store interior"
         className="hero-bg"
       />

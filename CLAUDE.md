@@ -30,14 +30,12 @@ Stay Tuned Records — mobile-first record store website with Shopify commerce i
 
 - Purpose: This tree allows Claude to select files to read in order to gather the appropriate, yet minimal context.
 - Instructions for Claude when updating the File Tree:
-  - If the purpose of the file is non-obvious, comment should include a minimal description. Only include the absolute minimum information needed for Claude to decide if that file contains relevant context for future prompts.
+  - If the purpose of the file is non-obvious and Claude will need to know its purpose to decide if the file contains relevant context for future prompts: write a short description, including only the absolute minimum information necessary.
   - If the file calls another file, the comment should include: "(Calls: {file.name})"
   - If the file is a stub, mark it as such (STUB).
 
 stay_tuned/
 ├── CLAUDE.md
-├── ARCHITECTURE.md                    # Intended data flow for carousels, cart, and FAQ
-├── TODO.md                            # Outstanding tasks for Shannon and Claude
 ├── README.md
 ├── .gitignore
 │
@@ -49,30 +47,33 @@ stay_tuned/
 │   ├── public/
 │   │   ├── assets/
 │   │   │   ├── event_flier.png
-│   │   │   ├── hero_image.png
 │   │   │   ├── stay_tuned_logo.png
-│   │   │   └── icons/
+│   │   │   ├── wood-texture.svg
+│   │   │   ├── icons/                   # DO NOT LIST
+│   │   │   └── images/                  # DO NOT LIST
 │   │   └── filler/                    # Dev-only placeholder album art
 │   └── src/
-│       ├── main.jsx                   # React entry point. (Calls: App.jsx, global.css, layout.css)
-│       ├── App.jsx                    # Root component; manages menu open/close state. (Calls: Header.jsx, Menu.jsx, Home.jsx, Shop.jsx, About.jsx)
+│       ├── main.jsx                   # React entry point. (Calls: App.jsx, global.css, layout.css, react-router-dom)
+│       ├── App.jsx                    # Root component; manages menu open/close state. (Calls: Header.jsx, Menu.jsx, Home.jsx, Shop.jsx, About.jsx, react-router-dom)
 │       ├── shopify.js                 # STUB — Shopify Buy SDK client init.
 │       ├── api.js                     # STUB — fetch helpers for Express backend.
 │       ├── components/
-│       │   ├── Header.jsx             # Accepts onMenuClick prop to open the Menu.
-│       │   ├── Menu.jsx               # Slide-down nav overlay: Home, Shop, FAQ, Our Story. Highlights active route. (Calls: react-router-dom)
-│       │   ├── Hero.jsx               # Hero image with category link buttons linking to /shop. (Calls: react-router-dom)
-│       │   ├── Carousel.jsx           # Horizontal scrolling product carousel with scroll-in animation. (Calls: CarouselItem.jsx)
-│       │   ├── CarouselItem.jsx       # Album card: image, title, price, add-to-cart button.
-│       │   ├── Event.jsx              # Displays the event_flier.png static image.
-│       │   ├── Faq.jsx                # FAQ accordion: manages open state, close-on-click-outside, close-on-scroll. (Calls: FaqItem.jsx)
-│       │   ├── FaqItem.jsx            # FAQ row: question button + expand/collapse answer card.
-│       │   ├── Newsletter.jsx         # Email signup: validates email pattern, shows green submit arrow on valid input.
-│       │   └── Footer.jsx            # Store info: hours, social links, address (Google Maps), email. (Calls: Footer.css)
+│       │   ├── Header.jsx             # Accepts onMenuClick prop to open the Menu. (Calls: Header.css)
+│       │   ├── Menu.jsx               # Slide-down nav overlay: Home, Shop, FAQ, Our Story. Highlights active route. (Calls: react-router-dom, Menu.css)
+│       │   ├── Hero.jsx               # Hero image with category link buttons linking to /shop. (Calls: react-router-dom, Hero.css)
+│       │   ├── Carousel.jsx           # Horizontal scrolling product carousel with scroll-in animation. (Calls: CarouselItem.jsx, Carousel.css)
+│       │   ├── CarouselItem.jsx       # Album card: image, title, price, add-to-cart button. (Calls: CarouselItem.css)
+│       │   ├── Event.jsx              # Displays the event_flier.png static image. (Calls: Event.css)
+│       │   ├── Faq.jsx                # FAQ accordion: manages open state, close-on-click-outside, close-on-scroll. (Calls: FaqItem.jsx, Faq.css)
+│       │   ├── FaqItem.jsx            # FAQ row: question button + expand/collapse answer card. (Calls: FaqItem.css)
+│       │   ├── Newsletter.jsx         # Email signup: validates email pattern, shows green submit arrow on valid input. (Calls: Newsletter.css)
+│       │   ├── Footer.jsx            # Store info: hours, social links, address (Google Maps), email. (Calls: Footer.css)
+│       │   ├── ShopFilter.jsx        # Filter dropdown: green button with funnel icon + active label; click opens sliding menu of filter options. (Calls: ShopFilter.css)
+│       │   └── ShopSorter.jsx        # Sort dropdown: green button with sort icon + active label; click opens sliding menu of sort options. (Calls: ShopSorter.css)
 │       ├── pages/
 │       │   ├── Home.jsx               # (Calls: Hero.jsx, Event.jsx, Carousel.jsx, Faq.jsx, Newsletter.jsx, Footer.jsx)
-│       │   ├── Shop.jsx               # STUB
-│       │   └── About.jsx              # STUB
+│       │   ├── Shop.jsx               # (Calls: ShopFilter.jsx, ShopSorter.jsx)
+│       │   └── About.jsx              # Scrapbook-style "Our Story" page with flexbox sections. (Calls: Footer.jsx, About.css, layout.css)
 │       └── styles/
 │           ├── tokens.css             # CSS custom properties: brand colors, fonts, spacing
 │           ├── global.css             # CSS reset & base element styles. (Calls: tokens.css)
@@ -86,7 +87,10 @@ stay_tuned/
 │           ├── Faq.css
 │           ├── FaqItem.css
 │           ├── Newsletter.css
-│           └── Footer.css
+│           ├── Footer.css
+│           ├── About.css              # Scrapbook layout: flexbox sections with one relative/absolute overlay for "Hey there!" text
+│           ├── ShopFilter.css
+│           └── ShopSorter.css
 │
 ├── server/                            # Express.js API
 │   ├── package.json

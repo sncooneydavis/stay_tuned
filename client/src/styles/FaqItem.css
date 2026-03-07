@@ -59,7 +59,7 @@
   background: linear-gradient(
   to bottom,
   rgba(255, 255, 255, .9) 0%,
-  rgba(255, 255, 255, .5) 100%
+  rgba(255, 255, 255, .7) 100%
 );
   padding: 24px;
   color: var(--color-brown);

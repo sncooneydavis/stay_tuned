@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Menu } from './components/Menu';
 import Home from './pages/Home';
@@ -8,12 +8,21 @@ import About from './pages/About';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const bodyRef = useRef(null);
+  const location = useLocation();
+
+  // Reset scroll position of .body-container when navigating between pages
+  useEffect(() => {
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = 0;
+    }
+  }, [location.pathname]);
 
   return (
     <>
       <Header onMenuClick={() => setIsMenuOpen(true)} />
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <div className="body-container">
+      <div className="body-container" ref={bodyRef}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />

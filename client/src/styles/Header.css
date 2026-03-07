@@ -24,7 +24,7 @@
 
 .header-logo {
   height: 100%;
-  width: auto;
+  max-width: 55%;
   object-fit: contain;
 }
 

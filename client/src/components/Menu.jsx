@@ -5,8 +5,6 @@ import '../styles/Menu.css';
 const NAV_ITEMS = [
   { label: 'Home', to: '/', matchPath: '/' },
   { label: 'Shop', to: '/shop', matchPath: '/shop' },
-  // FAQ section lives on the home page — no dedicated route, so never marked active
-  { label: 'FAQ', to: '/', matchPath: null },
   { label: 'Our Story', to: '/about', matchPath: '/about' },
 ];
 

@@ -16,7 +16,6 @@ body {
   font-size: var(--body-size);
   color: var(--text-color);
   background-color: var(--color-beige);
-
 }
 
 h1, h2, h3, h4, h5, h6 {
