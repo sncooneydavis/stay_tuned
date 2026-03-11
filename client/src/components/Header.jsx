@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../styles/Header.css';
 
-export function Header({ onMenuClick }) {
+export function Header({ onMenuClick, onCartClick }) {
   const [phoneActive, setPhoneActive] = useState(false);
 
   const handlePhoneClick = () => {
@@ -19,8 +19,7 @@ export function Header({ onMenuClick }) {
         />
         <div className="header-utilities">
           <div className="header-icons">
-            <button className="header-icon-btn" aria-label="Cart">
-              {/* TODO_LATER: add basket/cart slide-down functionality */}
+            <button type="button" className="header-icon-btn" aria-label="Cart" onClick={onCartClick}>
               <img src="/assets/icons/basket_green.svg" alt="" />
             </button>
             <button className="header-icon-btn" aria-label="Menu" onClick={onMenuClick}>

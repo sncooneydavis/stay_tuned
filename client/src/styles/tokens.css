@@ -23,8 +23,10 @@
   --block-radius: 10px;
   --card-radius: 12px;
   --border-radius: 20px;
+  --gap-xs: clamp(6px, 1dvw, 8px);
   --gap-sm: clamp(8px, 2dvw, 12px);
   --gap-md: clamp(12px, 3dvw, 20px);
   --gap-lg: clamp(24px, 5dvw, 32px);
   --gap-xl: clamp(36px, 6dvw, 48px);
+  --gap-xxl: clamp(48px, 7dvw, 60px);
 }

@@ -28,7 +28,7 @@
 
 .carousel-item__btn {
   width: 150px;
-  padding: var(--gap-sm) var(--gap-md);
+  padding: var(--gap-xs) var(--gap-md);
   background-color: var(--color-orange);
   color: var(--color-white);
   font-family: var(--font-heading);

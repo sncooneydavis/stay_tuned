@@ -1,0 +1,106 @@
+/* ── Cart panel: slides down from top, same motion as Menu ── */
+
+.cart-dropdown {
+  position: fixed;
+  top: 0;
+  left: 12px;
+  right: 12px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  /* max-height clamps the panel so the price block never scrolls off screen.
+     flex layout handles both cases: few items (panel short, price follows)
+     and many items (panel fills viewport, item-list scrolls). */
+  max-height: 100dvh;
+  transform: translateY(-110%);
+  transition: transform 1s ease;
+  padding-bottom: var(--gap-md);
+}
+
+.cart-dropdown--open {
+  transform: translateY(0);
+}
+
+/* ── Beige basket icon: absolute so item-list scroll doesn't move it ── */
+
+.cart-dropdown__icon-btn {
+  position: absolute;
+  /* Matches the vertical and horizontal position of the header cart icon */
+  top: 36px;
+  right: 48px;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.cart-dropdown__icon-btn img {
+  /* Fix width to match the green header icon's rendered size.
+     basket_beige.svg has a taller aspect ratio (28×33) than basket_green.svg (27×28),
+     so constraining by height alone produces a narrower icon. Width-constrain instead. */
+  width: 24px;
+  height: auto;
+}
+
+/* ── Empty state block ── */
+
+.cart-dropdown__empty {
+  background-color: var(--color-green);
+  /* Upper corners square (block starts at top of screen); lower corners rounded */
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Min height gives room for the icon + comfortable empty-state area */
+  min-height: calc(36px + 24px + var(--gap-lg) + 80px + 24px);
+  padding: 24px;
+}
+
+.cart-dropdown__empty-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-heading);
+  font-size: var(--button-text-size);
+  color: var(--color-beige);
+  text-decoration: none;
+  text-align: center;
+}
+
+/* ── Item list block ── */
+
+.cart-dropdown__item-list {
+  background-color: var(--color-green);
+  /* Upper corners square; lower corners rounded */
+  border-radius: 0 0 15px 15px;
+  /* padding-top: pushes first item below the absolute-positioned icon.
+     36px icon top + 24px icon height + gap-lg gap between icon and first item. */
+  padding: calc(36px + 24px + var(--gap-lg)) var(--gap-xxl) var(--gap-xxl) var(--gap-xxl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  overflow-y: auto;
+  /* flex: 0 1 auto — sized by content, shrinks when the panel would exceed max-height.
+     This achieves the spec behavior: price block sticks to viewport bottom only when
+     there are too many items to fit, without growing item-list when items are few. */
+  flex: 0 1 auto;
+  /* min-height: guarantees at least one item is always visible */
+  min-height: calc(36px + 24px + var(--gap-lg) + 110px + 24px);
+}
+
+/* ── Price block ── */
+
+.cart-dropdown__price {
+  background-color: var(--color-green);
+  /* All corners rounded — price block is a standalone block below item-list */
+  border-radius: 15px;
+  padding: 24px;
+  /* Never shrink — price block must always be fully visible */
+  flex: 0 0 auto;
+}
