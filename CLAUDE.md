@@ -10,7 +10,7 @@
 ## Do NOT
 
 - Extract shared utilities, helper functions, or base components from similar-looking code.
-- Add TypeScript, webpack, Redux, Zustand, or any state management library
+- Add TypeScript to the client (`client/`), or add webpack, Redux, Zustand, or any state management library
 - Build the event flier (`event_flier.png`) in HTML — it is a static image asset
 - Install UI component libraries (Material UI, Chakra, shadcn, etc.)
 - Add a root `package.json` or workspace tooling (Turborepo, Nx, Lerna)
@@ -22,7 +22,7 @@ Stay Tuned Records — mobile-first record store website with Shopify commerce i
 ### Stack
 
 - **Client** (`client/`): Vite + React + React Router
-- **Server** (`server/`): Express.js + Prisma (SQLite) + Passport.js
+- **Server** (`server/`): Express.js + TypeScript + Prisma (SQLite) + Passport.js
 - **Commerce**: Shopify Buy SDK (client-side) + Storefront API (server-side proxy for search)
 - **Styling**: Tailwind CSS v4 installed via `@tailwindcss/vite`; currently using CSS custom properties and layout utility classes. Tailwind utilities available for use as components are built.
 
@@ -134,3 +134,4 @@ Do not hardcode env values. Do not commit `.env` files.
 - **Styling**: Tailwind utility classes inline — do not extract to `@apply` unless explicitly asked
 - **Comments**: comment non-obvious logic, skip the obvious. No boilerplate JSDoc on every function
 - **State**: React Context + Shopify Buy SDK state. No Redux/Zustand unless explicitly approved
+- **Languages**: JavaScript for the client (`client/`); TypeScript for the server (`server/`) and CMS

@@ -41,10 +41,16 @@ export function Faq() {
   useEffect(() => {
     if (openIndex === null) return;
     const close = () => setOpenIndex(null);
-    // capture: true catches scroll on any scrollable element, not just window
     document.addEventListener('click', close);
-    window.addEventListener('scroll', close, { capture: true });
+    // Defer scroll listener: scroll-snap-type on .body-container fires a scroll
+    // event during layout reflow when the FAQ expands, which would immediately
+    // close the item. Wait for the snap-scroll and CSS transition to settle first.
+    const scrollTimer = setTimeout(() => {
+      // capture: true catches scroll on any scrollable element, not just window
+      window.addEventListener('scroll', close, { capture: true });
+    }, 500);
     return () => {
+      clearTimeout(scrollTimer);
       document.removeEventListener('click', close);
       window.removeEventListener('scroll', close, { capture: true });
     };

@@ -24,7 +24,8 @@ export default function Home() {
         <Carousel title="Just In" items={FILLER_ITEMS} />
         <Carousel title="Staff Picks" items={FILLER_ITEMS} />
       </section>
-      <section className="section">
+      {/* justify-content: flex-start + height: auto so FAQ expansion pushes content downward instead of overflowing upward */}
+      <section className="section" style={{ justifyContent: 'flex-start', height: 'auto', minHeight: '100%' }}>
         <Faq />
         <Newsletter />
         <Footer />
